@@ -1,0 +1,25 @@
+[package]
+authors = ["rise0chen"]
+edition = "2018"
+readme = "README.md"
+name = "mcu_stm32"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.7.2"
+cortex-m-rt = "0.6.10"
+embedded-hal = "0.2.4"
+alloc-cortex-m = "0.4.0"
+spin = "0.9"
+fixed-queue = "^0.3.1"
+task-stream = "^0.3.1"
+log = { version = "0.4", default-features = false }
+eds = { version = "0.4" }
+stm32f1xx-hal = { version = "0.7.0", features = ["rt", "stm32f103", "medium"] }
+nb = "1"
+
+[profile.release]
+opt-level = "s"
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
